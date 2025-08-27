@@ -1,0 +1,21 @@
+{% extends 'chat/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <h2 class="text-center mb-4">Available Chat Rooms</h2>
+        <div class="list-group">
+            {% for room in rooms %}
+            <a href="{% url 'room' room.slug %}" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ room.name }}</h5>
+                    <small class="text-muted">Join</small>
+                </div>
+            </a>
+            {% empty %}
+            <div class="alert alert-info">No chat rooms available.</div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
